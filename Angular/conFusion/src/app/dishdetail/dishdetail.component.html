@@ -13,7 +13,7 @@
           <h3>{{dish.name | uppercase}}</h3>
         </mat-card-title>
       </mat-card-header>
-      <img mat-card-image src="{{dish.image}}" alt="{{dish.name}}">
+      <img mat-card-image src="{{ baseURL + dish.image}}" alt="{{dish.name}}">
       <mat-card-content>
         <p>{{ dish.description }}</p>
       </mat-card-content>
@@ -29,9 +29,9 @@
       </mat-card-actions>
     </mat-card>
   </div>
-  <!-- <div [hidden]="dish">
+  <div [hidden]="dish">
     <mat-spinner></mat-spinner><h4>Loading . . . Please Wait</h4>
-  </div> -->
+  </div>
 
   <div fxFlex="40" *ngIf="dish">
     <mat-list>
@@ -43,8 +43,7 @@
           <span>-- {{ comment.author }} {{ comment.date | date }}</span>
         </p>
       </mat-list-item>
-       <!-- </mat-list>
-      </div> -->
+      <!-- Preview comments separated from main comments per assignment -->
       <mat-list-item *ngIf="commentForm.valid">
         <p mat-line>{{comment.comment}}</p>
         <p mat-line>{{comment.rating}} Stars</p>
@@ -74,8 +73,6 @@
       <button type="submit" mat-button class="background-primary text-floral-white" [disabled]="commentForm.invalid">Submit</button>
     </form>
   </div>
-
-
   <div [hidden]="dish">
     <mat-spinner></mat-spinner><h4>Loading . . . Please Wait</h4>
   </div>
