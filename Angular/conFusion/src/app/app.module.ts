@@ -23,7 +23,6 @@ import 'hammerjs';
 import { DishService } from './services/dish.service';
 import { PromotionService } from './services/promotion.service';
 import { LeaderService} from './services/leader.service';
-
 import { MenuComponent } from './menu/menu.component';
 import { DishdetailComponent } from './dishdetail/dishdetail.component';
 import { HeaderComponent } from './header/header.component';
@@ -37,6 +36,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { baseURL } from './shared/baseurl';
 import { HttpModule } from '@angular/http';
+import { ProcessHTTPMsgService } from './services/process-httpmsg.service';
 
 
 @NgModule({
@@ -78,6 +78,7 @@ import { HttpModule } from '@angular/http';
     DishService,
     PromotionService,
     LeaderService,
+    ProcessHTTPMsgService,
     {provide: 'baseURL', useValue: baseURL}
   ],
   entryComponents: [
