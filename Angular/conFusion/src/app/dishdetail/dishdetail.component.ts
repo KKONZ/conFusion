@@ -35,6 +35,7 @@ export class DishdetailComponent implements OnInit {
   comment: Comment;
   dishcopy: Dish;
   visibility = 'hidden';
+  @ViewChild('cform') feedbackFormDirective;
 
   formErrors = {
     'author': '',
@@ -123,20 +124,22 @@ export class DishdetailComponent implements OnInit {
   onSubmit() {
     this.comment = this.commentForm.value;
     this.comment.date = new Date().toISOString();
-    console.log(this.comment);
+    // console.log(this.comment);
     this.dishcopy.comments.push(this.comment);
     this.dishService.putDish(this.dishcopy)
       .subscribe(dish => {
         this.dish = dish; this.dishcopy = dish;
       },
       errmess => { this.dish = null; this.dishcopy = null; this.errMess = <any>errmess; });
-    // 
+    
     this.commentForm.reset({
       author: '',
       comment: '',
       rating: 5
 
     });
+    this.feedbackFormDirective.resetForm();
+
   }
 
 
