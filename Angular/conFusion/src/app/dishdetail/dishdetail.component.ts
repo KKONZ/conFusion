@@ -16,6 +16,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class DishdetailComponent implements OnInit {
 
   dish: Dish;
+  errMess: string;
   dishIds: string[];
   prev: string;
   next: string;
@@ -55,7 +56,8 @@ export class DishdetailComponent implements OnInit {
         .subscribe((dishIds) => this.dishIds = dishIds);
       this.route.params
         .pipe(switchMap((params: Params) => this.dishService.getDish(params['id'])))
-        .subscribe(dish => { this.dish = dish; this.setPrevNext(dish.id)});
+        .subscribe(dish => { this.dish = dish; this.setPrevNext(dish.id); } ,
+          errmess => this.errMess = <any>errmess);
     }
   
     createForm() {
